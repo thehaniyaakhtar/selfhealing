@@ -1,0 +1,78 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE and editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Operating system
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# MLflow artifacts and local tracking
+mlruns/
+mlartifacts/
+
+# Data files - do not commit datasets
+data/raw/*
+data/reference/*
+data/production/*
+data/simulation/*
+
+# Preserve directory structure
+!data/raw/.gitkeep
+!data/reference/.gitkeep
+!data/production/.gitkeep
+!data/simulation/.gitkeep
+
+# Model artifacts
+*.pkl
+*.joblib
+*.onnx
+*.pt
+*.pth
+*.h5
+*.keras
+
+# Temporary files
+*.tmp
+*.bak
+*.cache
+.cache/
+
+# Test and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/

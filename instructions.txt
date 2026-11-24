@@ -128,3 +128,17 @@ Simulate production observations
 Delayed prod. labels for perf monitoring
 
 This seperates data leaks and gives credible way to evaluate whether self healing mech works
+
+Understanding File Structure:
+raw: Original downloaded dataset
+reference: data used to estb baseline
+production: simulated incoming transactions
+Simulation: Artificially drifted dataset
+src: Actal application and ML code
+configs: configuration and thresholds
+test: automated tests
+notebooks: exploratory analysis
+airflow: workflow orchestration
+deployement: docker and serving configs
+mlruns: MLFlow exp artifacts
+
