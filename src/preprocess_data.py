@@ -35,9 +35,7 @@ ARTIFACT_PATH = (
 )
 
 TARGET_COLUMN = "Class"
-
 PCA_COLUMNS = [f"V{i}" for i in range(1, 29)]
-
 FEATURE_COLUMNS = ["Time", "Amount"] + PCA_COLUMNS
 
 
@@ -58,13 +56,10 @@ def load_datasets():
 
     return datasets
 
-
 # 3. Validate datasets
 
 def validate_datasets(datasets):
-
     for name, df in datasets.items():
-
         required_columns = FEATURE_COLUMNS + [TARGET_COLUMN]
 
         missing = [
@@ -150,20 +145,15 @@ def build_preprocessor():
 # 5. Separate features and target
 
 def separate_features_target(df):
-
     X = df[FEATURE_COLUMNS].copy()
-
     y = df[TARGET_COLUMN].copy()
-
     return X, y
 
 
 # 6. Fit on training data and transform all datasets
 
 def preprocess_datasets(datasets):
-
     preprocessor = build_preprocessor()
-
     X_train, y_train = separate_features_target(
         datasets["train"]
     )
@@ -191,7 +181,6 @@ def preprocess_datasets(datasets):
         )
 
         print(f"Transforming {name} data...")
-
         X_processed = preprocessor.transform(X)
 
         processed_datasets[name] = (
@@ -222,7 +211,6 @@ def save_artifacts(preprocessor, processed_datasets):
     print(f"\nSaved preprocessor: {ARTIFACT_PATH}")
 
     for name, df in processed_datasets.items():
-
         output_path = OUTPUT_PATHS[name]
 
         output_path.parent.mkdir(
@@ -243,7 +231,6 @@ def save_artifacts(preprocessor, processed_datasets):
 def display_summary(processed_datasets):
 
     print("\n========== PREPROCESSING SUMMARY ==========")
-
     for name, df in processed_datasets.items():
 
         print(f"\n{name.upper()}")
