@@ -106,3 +106,25 @@ Features:
 4. Class: Whether the transaction is fraus(1) or legit(0)
 
 PCA transformed features are anonymous
+
+Usage of Dataset
+Creating three distinct data env:
+1. Reference/ Training data
+Historical transactions used to train our initial model and establish baseline feature distribution
+
+2. Production/ Incoming data
+transactions arriving after deployement. Initially these will resemble the original data.
+
+3. Drift Simulation data
+deliberately introducing distribution changes to miukate changing transaction behavvior and test monitoring system.
+
+IMP:
+Randomly splitting the data and then use the test set to train replacement models: no
+Instead, seperate datasets for:
+Initial model Training
+Model evaluation
+Drift reference data
+Simulate production observations
+Delayed prod. labels for perf monitoring
+
+This seperates data leaks and gives credible way to evaluate whether self healing mech works
