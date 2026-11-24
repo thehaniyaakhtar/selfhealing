@@ -100,7 +100,7 @@ def validated_splits(datasets):
         current_max_time = dataset["Time"].max()
         
         if previous_max_time is not None:
-            if current_min_time < current_max_time:
+            if current_min_time > current_max_time:
                 raise ValueError(
                     f"Chronological ordering failed at {name}."
                 )
