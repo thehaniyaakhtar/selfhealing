@@ -1,0 +1,16 @@
+{
+    "model": "random_forest",
+    "decision_threshold": 0.395,
+    "precision": 1.0,
+    "recall": 0.7321428571428571,
+    "f1_score": 0.845360824742268,
+    "pr_auc": 0.8537155002981295,
+    "roc_auc": 0.9725316418610102,
+    "true_positives": 41,
+    "false_positives": 0,
+    "false_negatives": 15,
+    "true_negatives": 42665,
+    "flagged_transactions": 41,
+    "evaluation_rows": 42721,
+    "evaluation_fraud_cases": 56
+}
