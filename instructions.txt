@@ -59,3 +59,34 @@ Deliberately introduce changes into incoming data,
 observe detection process, 
 trigger retraining and 
 demonstrate if new model actually improves performance
+
+Concepts that matter
+1. Data Drift
+Suppose model was trained using reference dataset
+Where features have values that have changed significantly after a few months
+Thus, data drift where the stat dist of the input features
+
+2. Concept Drift
+Fraudsters have a new technique developed 
+transctions above x are marked as Fraud,
+thus they keep their transactions below x
+the relationship between input and target features has changed
+
+Data drift: (P(X)) changes
+Concept drift: (P(Y|X)) changes
+
+3. Model performance degradation
+Even when accuracy degrades, the model continues to produce predictions
+Thus, monitoring is needed
+
+4. Reference Data vs Production Data
+Use Alibi Detect
+Reference Data: The dataset or representative sample against which we establish what a normal dist looks like
+Production Data: The new obs entering our deployed model
+
+Drift Detector compares the both
+
+Thus, model should be able to distinguish between
+Detecting changes in incoming data
+Confirming whether model performance has deteriorated
+Deciding whether retraining is justified
