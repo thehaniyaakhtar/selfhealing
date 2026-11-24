@@ -1,0 +1,38 @@
+imagine you deploy a ML model that predicts if a financial transction is faudulent
+data keeps updating, transction patterns change, customer behavior evolves, data entering model starts looking differently from what is was trained on
+
+model doesnt crash, accuracy goes down
+-> model degradation
+
+PROBLEM SOLVED: detecting it
+
+platform contnuously monitors deployed model, identifies potential drift
+is retraining required, train candidate models, evaluate them against existing producton model and deploy replacement only when criteria is met
+
+1. Data Ingestion
+New incoming data enters the platform, validate it and prepare for inference
+
+2. Model serving
+A trained model makes predictions through API
+Record inputs, predictions and actual outputs
+
+3. Monitoring
+Monitor input distributions
+prediction distributions and model performance
+
+4. Drift Detection
+Alibi Detect compares incoming data against a reference distribution and identifies stats that change 
+
+5. Retrain Decision
+The system evaluates whether drift is sufficiently significant to justify retraining
+
+6. Automated retraining 
+Airflow orchestrates a pipeline that prepars data, trains candidte models and evaluates them
+
+7. Model evalution and registration
+MLFlow tracks experimentats, parameters, metics and model versions
+Candidate must passed predefined criteria
+
+8. Deployement and verification
+The approved model is depoyed in a DOcker container
+Verify and Monitoring
