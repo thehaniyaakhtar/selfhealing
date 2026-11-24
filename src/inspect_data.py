@@ -41,7 +41,7 @@ def validate_dataset(df):
     if df.empty:
         raise ValueError("Dataset is empty")
     
-    if not set(df["Class"].dropna().unique()).issubet({0, 1}):
+    if not set(df["Class"].dropna().unique()).issubset({0, 1}):
         raise ValueError("Unexpected values in target column.")
     
     print("\nDataset structure: VALID")
@@ -82,9 +82,10 @@ def inspect_quality(df):
 # Inpect fraud distribution
 
 def inspect_target(df):
-    print("\=====TARGET DISTRIBUTION=====")
+    print("\n=====TARGET DISTRIBUTION=====")
     
-    counts = df["Class"].values_counts().sort_index()
+    counts = df["Class"].value_counts().sort_index()
+    
     
     percentages = (
         df["Class"]
@@ -153,5 +154,5 @@ def main():
     print("\nDataset inspection completed.")
     
     
-if __name__=="__main__":
+if __name__ == "__main__":
     main()
