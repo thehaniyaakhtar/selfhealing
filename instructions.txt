@@ -90,3 +90,19 @@ Thus, model should be able to distinguish between
 Detecting changes in incoming data
 Confirming whether model performance has deteriorated
 Deciding whether retraining is justified
+
+Dataset chosen
+Credit Card Fraud Detection Dataset
+1. Represents real-world classification problem
+2. Contains numerical transaction features
+3. Fraud is a minority class, making it useful for class imbalance
+4. Simulate changes in behavior is importance
+5. Can evaluate whether retraining actually improves performance
+
+Features:
+1. Time: seconds elapsed between the first transactions and the current one
+2. Amount: transaction Amount
+3. V1-V28: Numrical features produce through PCA transformation
+4. Class: Whether the transaction is fraus(1) or legit(0)
+
+PCA transformed features are anonymous
