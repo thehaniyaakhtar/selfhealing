@@ -1,5 +1,9 @@
 
+import json
 import logging
+import uuid
+
+from datetime import datetime, timezone
 from pathlib import Path
 
 import joblib
@@ -15,7 +19,14 @@ from pydantic import BaseModel, ConfigDict, Field
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
-MODEL_PATH = PROJECT_ROOT / "artifacts" / "random_forest_candidate.joblib"
+MODEL_PATH = (
+    PROJECT_ROOT
+    / "artifacts"
+    / "random_forest_candidate.joblib"
+)
+
+LOG_DIRECTORY = PROJECT_ROOT / "logs"
+PREDICTION_LOG_PATH = LOG_DIRECTORY / "predictions.jsonl"
 
 MODEL_VERSION = "random-forest-candidate-v1"
 DECISION_THRESHOLD = 0.395
@@ -28,7 +39,7 @@ FEATURE_COLUMNS = [
 
 
 # --------------------------------------------------
-# LOGGING
+# LOGGING CONFIGURATION
 # --------------------------------------------------
 
 logging.basicConfig(
@@ -38,9 +49,11 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
+LOG_DIRECTORY.mkdir(parents=True, exist_ok=True)
+
 
 # --------------------------------------------------
-# LOAD TRAINED MODEL
+# LOAD MODEL
 # --------------------------------------------------
 
 if not MODEL_PATH.exists():
@@ -107,6 +120,36 @@ class Transaction(BaseModel):
 
 
 # --------------------------------------------------
+# PREDICTION PERSISTENCE
+# --------------------------------------------------
+
+def save_prediction(record: dict) -> bool:
+    """
+    Append one prediction record to the JSONL log.
+
+    Each line is an independent JSON object.
+    Returns True if the record was written successfully.
+    """
+
+    try:
+        with open(
+            PREDICTION_LOG_PATH,
+            "a",
+            encoding="utf-8"
+        ) as log_file:
+
+            log_file.write(
+                json.dumps(record, allow_nan=False) + "\n"
+            )
+
+        return True
+
+    except (OSError, ValueError, TypeError):
+        logger.exception("Could not persist prediction.")
+        return False
+
+
+# --------------------------------------------------
 # HEALTH CHECK
 # --------------------------------------------------
 
@@ -127,7 +170,6 @@ def health_check():
 @app.post("/predict")
 def predict(transaction: Transaction):
 
-    # Convert validated input into a DataFrame.
     transaction_data = transaction.model_dump()
 
     input_df = pd.DataFrame(
@@ -135,17 +177,14 @@ def predict(transaction: Transaction):
         columns=FEATURE_COLUMNS
     )
 
-    # Generate fraud probabilities using the full pipeline.
     probabilities = model.predict_proba(input_df)[0]
 
-    # Find the probability associated with fraud class 1.
     fraud_class_index = list(model.classes_).index(1)
 
     fraud_probability = float(
         probabilities[fraud_class_index]
     )
 
-    # Apply the operational decision threshold.
     predicted_class = int(
         fraud_probability >= DECISION_THRESHOLD
     )
@@ -156,17 +195,47 @@ def predict(transaction: Transaction):
         else "LEGITIMATE"
     )
 
+    # Generate a unique identifier for this prediction.
+    prediction_id = str(uuid.uuid4())
+
+    # Capture the current UTC timestamp.
+    prediction_timestamp = datetime.now(
+        timezone.utc
+    ).isoformat()
+
+    # Construct the persistent prediction record.
+    prediction_record = {
+        "prediction_id": prediction_id,
+        "timestamp": prediction_timestamp,
+        "features": transaction_data,
+        "fraud_probability": fraud_probability,
+        "decision_threshold": DECISION_THRESHOLD,
+        "predicted_class": predicted_class,
+        "decision": decision,
+        "model_name": "Random Forest",
+        "model_version": MODEL_VERSION,
+        "actual_label": None
+    }
+
+    # Persist the prediction.
+    prediction_logged = save_prediction(
+        prediction_record
+    )
+
     logger.info(
-        "Prediction generated | model=%s | decision=%s",
-        MODEL_VERSION,
-        decision
+        "Prediction generated | id=%s | decision=%s | logged=%s",
+        prediction_id,
+        decision,
+        prediction_logged
     )
 
     return {
+        "prediction_id": prediction_id,
         "model_name": "Random Forest",
         "model_version": MODEL_VERSION,
         "fraud_probability": round(fraud_probability, 6),
         "decision_threshold": DECISION_THRESHOLD,
         "predicted_class": predicted_class,
-        "decision": decision
+        "decision": decision,
+        "prediction_logged": prediction_logged
     }
