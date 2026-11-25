@@ -1,0 +1,27 @@
+{
+    "generated_at": "2026-11-25T09:39:25.347956+00:00",
+    "evaluation_dataset": "data/reference/evaluation.csv",
+    "evaluation_observations": 42721,
+    "evaluation_fraud_cases": 56,
+    "method": "paired_nonparametric_bootstrap",
+    "random_state": 42,
+    "results": {
+        "incumbent_pr_auc": 0.8537155002981295,
+        "candidate_pr_auc": 0.8628485347447212,
+        "observed_pr_auc_improvement": 0.009133034446591748,
+        "confidence_level": 0.95,
+        "confidence_interval": {
+            "lower_bound": -0.016172656674901663,
+            "upper_bound": 0.03347494231625334
+        },
+        "bootstrap_samples": 1000,
+        "bootstrap_probability_candidate_wins": 0.786,
+        "interpretation": "IMPROVEMENT_INCONCLUSIVE"
+    },
+    "limitations": [
+        "The confidence interval describes resampling uncertainty conditional on this evaluation dataset.",
+        "It does not guarantee future production performance.",
+        "Repeated use of the same evaluation dataset can introduce selection bias.",
+        "This interval is not a formal hypothesis-test p-value."
+    ]
+}
