@@ -1,0 +1,19 @@
+{
+    "timestamp": "2026-11-25T11:41:11.999794+00:00",
+    "model_name": "self-healing-fraud-detector",
+    "model_version": 1,
+    "source_training_run_id": "8cfca97e4d98483b96369e6213ba58da",
+    "promotion_status": "REJECTED",
+    "deployment_eligible": "false",
+    "deployment_status_before_attempt": "NOT_DEPLOYED",
+    "deployment_checks": {
+        "promotion_approved": false,
+        "deployment_eligible": false,
+        "not_already_deployed": true,
+        "approved_pending_deployment": false
+    },
+    "deployment_status": "BLOCKED",
+    "deployment_executed": false,
+    "incumbent_modified": false,
+    "reason": "Model failed one or more deployment eligibility checks."
+}
