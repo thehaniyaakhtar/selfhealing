@@ -1,0 +1,17 @@
+{
+    "timestamp": "2026-11-25T19:17:18.423564+00:00",
+    "model_name": "self-healing-fraud-detector",
+    "model_version": 1,
+    "deployment_checks": {
+        "promotion_approved": false,
+        "deployment_eligible": false,
+        "not_already_deployed": true,
+        "approved_pending_deployment": false,
+        "registry_version_ready": true,
+        "source_training_run_present": true
+    },
+    "deployment_status": "BLOCKED",
+    "deployment_executed": false,
+    "incumbent_modified": false,
+    "reason": "The registered model did not pass all deployment authorization checks."
+}

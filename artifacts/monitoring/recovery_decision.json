@@ -1,6 +1,6 @@
 {
     "decision": "TRIGGER_RETRAINING_EVALUATION",
-    "generated_at": "2026-11-25T06:47:15.019314+00:00",
+    "generated_at": "2026-11-25T19:10:48.628852+00:00",
     "signals": {
         "feature_drift_detected": true,
         "performance_status": "DEGRADED",

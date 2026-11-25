@@ -1,11 +1,11 @@
 {
     "report_version": "1.0",
-    "generated_at": "2026-11-25T06:23:09.887656+00:00",
+    "generated_at": "2026-11-25T19:10:32.283625+00:00",
     "monitoring_status": "DRIFT_DETECTED",
     "monitoring_window": {
         "reference_rows": 28480,
         "production_rows": 42722,
-        "reference_report_timestamp": "2026-11-25T06:15:39.064419+00:00"
+        "reference_report_timestamp": "2026-11-25T19:10:30.315993+00:00"
     },
     "statistical_configuration": {
         "correction_method": "Bonferroni",

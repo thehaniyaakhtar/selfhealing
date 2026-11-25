@@ -527,3 +527,8 @@ def execute_deployment():
 
 if __name__ == "__main__":
     execute_deployment()
+
+# Recheck the registered model's authorization
+# Download the exact MLflow version and validate its inference behaviour
+# Save a versioned .joblib artifact and write the active manifest atomically
+# Update MLflow deployment tags only after activation succeeds
