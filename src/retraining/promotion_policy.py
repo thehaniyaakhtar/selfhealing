@@ -433,3 +433,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Candidte was rejected and incumbent mode remains protected
+# ROC AUR failed
