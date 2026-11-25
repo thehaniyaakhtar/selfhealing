@@ -64,7 +64,6 @@ from sklearn.preprocessing import FunctionTransformer, StandardScaler
 
 from src.monitoring.data_validator import load_monitoring_dataset
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 TRAIN_DATA_PATH = (
@@ -617,3 +616,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# the  given file:
+# check the recovery engine for requested retraining
+# load and combine the training datasets
+# train new Random Forest
+# evaluate both old and new models on same evaluaton data
+# save the candidate and comparison report seperately

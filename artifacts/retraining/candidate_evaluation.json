@@ -1,0 +1,59 @@
+{
+    "generated_at": "2026-11-25T07:34:51.738264+00:00",
+    "recovery_decision": "TRIGGER_RETRAINING_EVALUATION",
+    "training_data": {
+        "sources": [
+            "data/reference/train.csv",
+            "data/reference/drift_reference.csv"
+        ],
+        "observations": 199364,
+        "fraud_cases": 384,
+        "legitimate_cases": 198980
+    },
+    "evaluation_data": {
+        "source": "data/reference/evaluation.csv",
+        "observations": 42721,
+        "fraud_cases": 56
+    },
+    "decision_threshold": 0.395,
+    "incumbent_metrics": {
+        "precision": 1.0,
+        "recall": 0.7321428571428571,
+        "f1_score": 0.845360824742268,
+        "pr_auc": 0.8537155002981295,
+        "roc_auc": 0.9725316418610102,
+        "true_positives": 41,
+        "false_positives": 0,
+        "false_negatives": 15,
+        "true_negatives": 42665,
+        "fraud_cases": 56,
+        "legitimate_cases": 42665,
+        "flagged_transactions": 41,
+        "decision_threshold": 0.395
+    },
+    "candidate_metrics": {
+        "precision": 1.0,
+        "recall": 0.7321428571428571,
+        "f1_score": 0.845360824742268,
+        "pr_auc": 0.8628485347447212,
+        "roc_auc": 0.9620396025514389,
+        "true_positives": 41,
+        "false_positives": 0,
+        "false_negatives": 15,
+        "true_negatives": 42665,
+        "fraud_cases": 56,
+        "legitimate_cases": 42665,
+        "flagged_transactions": 41,
+        "decision_threshold": 0.395
+    },
+    "candidate_minus_incumbent": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0,
+        "pr_auc": 0.009133,
+        "roc_auc": -0.010492
+    },
+    "candidate_model_path": "C:\\Users\\theha\\OneDrive\\Desktop\\selfhealing\\artifacts\\retraining\\retrained_candidate.joblib",
+    "promotion_status": "NOT_DECIDED",
+    "deployment_instruction": "The candidate has only been trained and evaluated. Do not replace the incumbent model until the separate promotion policy has been executed."
+}
