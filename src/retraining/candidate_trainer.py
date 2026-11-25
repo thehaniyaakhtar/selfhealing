@@ -623,3 +623,18 @@ if __name__ == "__main__":
 # train new Random Forest
 # evaluate both old and new models on same evaluaton data
 # save the candidate and comparison report seperately
+
+# RESULT:
+# candidate has not demonstrated a clear operational improvement yet.
+# Cadidate has higher PR AUC and lower ROC AUC
+# At fixed threshold, both models make exactly same classifications
+
+
+# Can AUC score change when predictions dont?
+# 1. Model prodces fraud possibilities
+# Apply threshold to them
+# Below it: legitimate
+# Above it: Fraud
+# Two models can produce slightly different probabilities for every transaction but still puts every transacction on the same side of the threshold
+# model artifacts accomplished:
+# current incumbent model and newly trained candidate and a comparison report
