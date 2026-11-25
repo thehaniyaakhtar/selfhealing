@@ -247,3 +247,8 @@ if __name__ == "__main__":
 
 # it must return a structured object containing both datasets and ingestion metadata
 # start with historiccal CSV since API prediction log ingestion will be seperate adapter since logs have diferent structure and may contain delayed/ unavailable labels
+
+
+# 2 main functions
+# load_reference_profile(): loads saved JSON baseline, checks all 30 expected features and stat. summaries
+# prepare_monitoring_input(): coordinates the loading of both datasets and verifies compatibility
