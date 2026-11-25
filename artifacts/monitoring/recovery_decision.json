@@ -1,0 +1,41 @@
+{
+    "decision": "TRIGGER_RETRAINING_EVALUATION",
+    "generated_at": "2026-11-25T06:47:15.019314+00:00",
+    "signals": {
+        "feature_drift_detected": true,
+        "performance_status": "DEGRADED",
+        "failed_performance_guardrails": [
+            "pr_auc"
+        ]
+    },
+    "performance_policy": {
+        "minimum_precision": 0.9,
+        "minimum_recall": 0.7,
+        "minimum_pr_auc": 0.8,
+        "minimum_fraud_cases": 30,
+        "decision_threshold": 0.395
+    },
+    "performance_assessment": {
+        "status": "DEGRADED",
+        "reason": "Performance evaluated using available production labels.",
+        "failed_guardrails": [
+            "pr_auc"
+        ],
+        "metrics": {
+            "precision": 0.925,
+            "recall": 0.7115384615384616,
+            "f1_score": 0.8043478260869565,
+            "pr_auc": 0.7571657697338604,
+            "true_positives": 37,
+            "false_positives": 3,
+            "false_negatives": 15,
+            "true_negatives": 42667,
+            "fraud_cases": 52,
+            "legitimate_cases": 42670,
+            "flagged_transactions": 40,
+            "decision_threshold": 0.395
+        }
+    },
+    "explanation": "One or more model performance guardrails were not met. A retraining evaluation should be initiated. The existing model must remain active until a candidate passes independent evaluation and promotion checks.",
+    "deployment_instruction": "Do not replace the currently deployed model based on this decision alone."
+}
