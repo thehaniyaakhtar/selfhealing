@@ -469,3 +469,23 @@ def main():
 if __name__ == "__main__":
     main()
 
+# Saves output in json file
+# Output contains: Production performance metrics
+# Number of fraud and leit transactions evaluated
+# Failed performance guardrailes
+# Recovery decision
+# AN explanation of why a decision was made
+
+# Important distinctions
+# Drift is not failure:
+# current monitoring results show 29 drifted features, 
+# but if the model still performs well, 
+# automatically retraining could make things worse
+
+# Labels determine what we can know
+# IF there is no enough actual fraud examples, one cannot confidently assess recall.
+# The engine must wait rather than invent a performance assessment
+
+# Retraining is not deployement
+# Even if performance degrades, the decision engine only requests a retraining evaluation
+# a new candidate must be independetly testes before it can replace the existing model
