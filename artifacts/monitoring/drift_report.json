@@ -1,0 +1,33 @@
+{
+    "generated_at": "2026-11-25T06:07:58.727724+00:00",
+    "reference_rows": 28480,
+    "production_rows": 42722,
+    "total_features": 30,
+    "tested_features": 29,
+    "significance_level": 0.05,
+    "correction_method": "Bonferroni",
+    "adjusted_significance_level": 0.001724137931034483,
+    "drifted_features": [],
+    "temporal_diagnostics": [
+        "Time"
+    ],
+    "results": [
+        {
+            "feature": "Time",
+            "monitoring_role": "temporal_diagnostic",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 1.0,
+            "p_value": 0.0,
+            "significance_threshold": null,
+            "drift_detected": null
+        },
+        {
+            "feature": "Amount",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.12755033982438851,
+            "p_value": 8.190167887931331e-243,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": 

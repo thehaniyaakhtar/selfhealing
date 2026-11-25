@@ -11,8 +11,33 @@
 # Preference(X) \ne Pproduction(X)
 # aim: detect the evidence of that change
 
-# Use KS test to compare cumulative distibution functions of 2 samples
+# Use KS test to compare cumulative distibution functions of 2 samples (the prob that they are less than or equ to)
+# D = sup_x |Freference x - F production x|
+# Take a value on the feature scale
+# Calculate the proportion of ference observations at or below the value
+# Calculate the equivalent proportion in production
+# Measure he largest difference between those proportions
 
+# KS stats D ranges from 0 to 1
+# 0: the dist are v simialar
+# 1: larger values: the dist are more substantial
+# test also returns a p value, how surprisin the observed difference would be under the assumption that both samples come from the same dist
+# small p value: evidence against the assumption
+
+# Multiple testing correction:
+# 30 features, test every feature at a significance level of 0.05
+# testing many features can raise the chance of one of them being a false alarm
+
+# Bonferroni correction:
+# alpha adjusted = 0.05 / 29 = 0.001724
+# feature will be flagged as stat. drifted when p value is below the threshold
+# datasets are split chronologically, time is excluded 
+
+# KS test needs underlying observatons from both datasets
+# detector uses:
+# original reference observations
+# production batch loaded dataset
+# json to verify that reference feature schema matches the profile
 
 
 import json
