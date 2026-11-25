@@ -40,6 +40,7 @@
 # json to verify that reference feature schema matches the profile
 
 
+
 import json
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -69,8 +70,8 @@ REPORT_PATH = (
 
 SIGNIFICANCE_LEVEL = 0.05
 
-# Time is excluded because our datasets were split chronologically.
-# It is still measured and reported as a temporal diagnostic.
+# Time is excluded from drift alerts because the datasets
+# were split chronologically. It remains a diagnostic.
 EXCLUDED_FROM_ALERTS = {"Time"}
 
 TESTED_FEATURES = [
@@ -112,24 +113,17 @@ class DriftDetectionReport:
 
 
 def load_reference_observations():
-    """
-    Load the original reference observations.
-
-    Summary statistics alone cannot be used for a
-    two-sample KS test, so we need the raw observations.
-    """
+    """Load the original reference observations."""
 
     if not REFERENCE_DATA_PATH.exists():
         raise FileNotFoundError(
             f"Reference dataset not found: {REFERENCE_DATA_PATH}"
         )
 
-    reference_batch = load_monitoring_dataset(
+    return load_monitoring_dataset(
         file_path=REFERENCE_DATA_PATH,
         dataset_name="reference",
     )
-
-    return reference_batch
 
 
 def validate_monitoring_compatibility(
@@ -137,28 +131,23 @@ def validate_monitoring_compatibility(
     reference_features,
     production_features,
 ):
-    """
-    Ensure all monitoring inputs use the same feature schema.
-    """
+    """Verify that the profile and both datasets share a schema."""
 
     profile_features = list(
         reference_profile["features"].keys()
     )
-
-    reference_columns = list(reference_features.columns)
-    production_columns = list(production_features.columns)
 
     if profile_features != FEATURE_COLUMNS:
         raise ValueError(
             "Reference profile feature schema is incompatible."
         )
 
-    if reference_columns != FEATURE_COLUMNS:
+    if list(reference_features.columns) != FEATURE_COLUMNS:
         raise ValueError(
             "Reference observation feature schema is incompatible."
         )
 
-    if production_columns != FEATURE_COLUMNS:
+    if list(production_features.columns) != FEATURE_COLUMNS:
         raise ValueError(
             "Production feature schema is incompatible."
         )
@@ -169,9 +158,7 @@ def compare_feature_distributions(
     production_values,
     feature_name: str,
 ) -> FeatureDriftResult:
-    """
-    Compare one feature using the two-sample KS test.
-    """
+    """Compare one feature using the two-sample KS test."""
 
     test_result = ks_2samp(
         reference_values,
@@ -190,9 +177,13 @@ def compare_feature_distributions(
         monitoring_role = "temporal_diagnostic"
     else:
         threshold = ADJUSTED_SIGNIFICANCE_LEVEL
-        drift_detected = (
+
+        # Convert NumPy Boolean to a native Python Boolean.
+        # This supports correct comparisons and JSON serialization.
+        drift_detected = bool(
             test_result.pvalue < ADJUSTED_SIGNIFICANCE_LEVEL
         )
+
         monitoring_role = "drift_alert"
 
     return FeatureDriftResult(
@@ -210,12 +201,9 @@ def compare_feature_distributions(
 def detect_drift(
     monitoring_input: ProductionMonitoringInput,
 ) -> DriftDetectionReport:
-    """
-    Compare reference and production feature distributions.
-    """
+    """Compare reference and production feature distributions."""
 
     reference_batch = load_reference_observations()
-
     production_batch = monitoring_input.production_batch
 
     validate_monitoring_compatibility(
@@ -271,9 +259,7 @@ def detect_drift(
 
 
 def save_drift_report(report: DriftDetectionReport):
-    """
-    Save the complete drift detection report as JSON.
-    """
+    """Save the complete drift detection report as JSON."""
 
     REPORT_PATH.parent.mkdir(
         parents=True,
@@ -293,9 +279,7 @@ def save_drift_report(report: DriftDetectionReport):
 
 
 def print_drift_summary(report: DriftDetectionReport):
-    """
-    Print a readable summary of the drift detection results.
-    """
+    """Print a readable summary of the detection results."""
 
     print("\n========== DRIFT DETECTION REPORT ==========")
 
@@ -330,9 +314,7 @@ def print_drift_summary(report: DriftDetectionReport):
 
     print("\n========== SUMMARY ==========")
 
-    print(
-        f"Drifted features: {len(report.drifted_features)}"
-    )
+    print(f"Drifted features: {len(report.drifted_features)}")
 
     if report.drifted_features:
         print(", ".join(report.drifted_features))
@@ -371,3 +353,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# Run the KS test on all 30 features.
+# Apply Bonferroni correction to the 29 alert-eligible features.
+# Report Time separately as a temporal diagnostic.
+# Save the results to:
+# artifacts/monitoring/drift_report.json

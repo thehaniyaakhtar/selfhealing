@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-11-25T06:07:58.727724+00:00",
+    "generated_at": "2026-11-25T06:15:39.064419+00:00",
     "reference_rows": 28480,
     "production_rows": 42722,
     "total_features": 30,
@@ -7,7 +7,37 @@
     "significance_level": 0.05,
     "correction_method": "Bonferroni",
     "adjusted_significance_level": 0.001724137931034483,
-    "drifted_features": [],
+    "drifted_features": [
+        "Amount",
+        "V1",
+        "V2",
+        "V3",
+        "V4",
+        "V5",
+        "V6",
+        "V7",
+        "V8",
+        "V9",
+        "V10",
+        "V11",
+        "V12",
+        "V13",
+        "V14",
+        "V15",
+        "V16",
+        "V17",
+        "V18",
+        "V19",
+        "V20",
+        "V21",
+        "V22",
+        "V23",
+        "V24",
+        "V25",
+        "V26",
+        "V27",
+        "V28"
+    ],
     "temporal_diagnostics": [
         "Time"
     ],
@@ -30,4 +60,287 @@
             "ks_statistic": 0.12755033982438851,
             "p_value": 8.190167887931331e-243,
             "significance_threshold": 0.001724137931034483,
-            "drift_detected": 
+            "drift_detected": true
+        },
+        {
+            "feature": "V1",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.028018347913266295,
+            "p_value": 4.358119988758387e-12,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V2",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.08851986766810671,
+            "p_value": 5.9091528824826895e-117,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V3",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.015493502479316135,
+            "p_value": 0.0005413659175828092,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V4",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.03508739905340452,
+            "p_value": 1.0308251000640981e-18,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V5",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.018736133239774855,
+            "p_value": 1.2159985718611954e-05,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V6",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.052358197418481245,
+            "p_value": 3.7390442110171396e-41,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V7",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.027684597218284424,
+            "p_value": 8.230418294419626e-12,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V8",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.03006452021404124,
+            "p_value": 7.483039715184307e-14,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V9",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.04320182573092096,
+            "p_value": 3.762375466665301e-28,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V10",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.06410998411996238,
+            "p_value": 1.673399642251258e-61,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V11",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.026769259542619106,
+            "p_value": 4.526093086937224e-11,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V12",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.06199300356524995,
+            "p_value": 1.5613217016185104e-57,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V13",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.033612775290366964,
+            "p_value": 3.296287121016805e-17,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V14",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.014476736586523042,
+            "p_value": 0.0015350212603425003,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V15",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.022325975446695095,
+            "p_value": 7.863852881495756e-08,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V16",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.0423374676310761,
+            "p_value": 4.7205433152470116e-27,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V17",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.014480042188089293,
+            "p_value": 0.0015300041575472827,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V18",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.03239675115418261,
+            "p_value": 5.132519068984672e-16,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V19",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.036389242260782995,
+            "p_value": 4.27494212279608e-20,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V20",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.030992555936498745,
+            "p_value": 1.0775849610599706e-14,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V21",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.07456965867387216,
+            "p_value": 4.413329211643962e-83,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V22",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.07001967646593155,
+            "p_value": 2.712040304440338e-73,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V23",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.03070575431756606,
+            "p_value": 1.9737044156050166e-14,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V24",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.018602612250404896,
+            "p_value": 1.4420468082216675e-05,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V25",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.05093376751393519,
+            "p_value": 5.748333671202389e-39,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V26",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.051453777597417205,
+            "p_value": 9.294563946298221e-40,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V27",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.03005004690633839,
+            "p_value": 7.70905307325693e-14,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        },
+        {
+            "feature": "V28",
+            "monitoring_role": "drift_alert",
+            "reference_count": 28480,
+            "production_count": 42722,
+            "ks_statistic": 0.014570713639106059,
+            "p_value": 0.0013981928785667878,
+            "significance_threshold": 0.001724137931034483,
+            "drift_detected": true
+        }
+    ]
+}
