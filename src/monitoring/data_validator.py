@@ -220,3 +220,7 @@ def load_monitoring_dataset(
 # Monitoring paths are kept seperate
 # Feature monitoring: can run immediately, doesnt know if trans are fraud.
 # Perf. monitoring: Must wait till actual labels become available
+
+# thus, model now has consistent representation of incoming data
+
+# 
