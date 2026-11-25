@@ -371,3 +371,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# platform distinguishes correctly betwen feature drift from model perf degradation
+# recommends investigation rather than automatically retraining
+
+# a change in input distributions is evidence to investigate, not proof that the model needs replacing.
