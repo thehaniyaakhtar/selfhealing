@@ -234,3 +234,8 @@ class ModelManager:
                 "model_version": self._model_version,
                 "decision_threshold": self._decision_threshold
             }
+            
+# Loading the original model if no deployment manifest exists.
+# Detecting when the active manifest changes.
+# Loading and validating the replacement before switching.
+# Keeping the previous model active if the replacement cannot be loaded.
