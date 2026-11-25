@@ -1,9 +1,10 @@
 {
-    "generated_at": "2026-11-25T07:54:34.079658+00:00",
+    "generated_at": "2026-11-25T10:01:12.437104+00:00",
     "promotion_status": "REJECTED",
     "checks_passed": 4,
-    "checks_total": 5,
+    "checks_total": 6,
     "failed_checks": [
+        "positive_bootstrap_confidence_interval",
         "roc_auc_regression"
     ],
     "checks": [
@@ -12,35 +13,45 @@
             "passed": true,
             "observed_value": 1.0,
             "required_value": ">= 0.9",
-            "explanation": "Candidate precision must meet the minimum operational requirement."
+            "explanation": "Candidate must meet the minimum precision requirement."
         },
         {
             "name": "minimum_recall",
             "passed": true,
             "observed_value": 0.7321428571428571,
             "required_value": ">= 0.7",
-            "explanation": "Candidate recall must meet the minimum fraud detection requirement."
+            "explanation": "Candidate must meet the minimum fraud recall requirement."
         },
         {
             "name": "minimum_pr_auc",
             "passed": true,
             "observed_value": 0.8628485347447212,
             "required_value": ">= 0.8",
-            "explanation": "Candidate PR-AUC must meet the minimum ranking performance requirement."
+            "explanation": "Candidate must meet the minimum PR-AUC requirement."
         },
         {
             "name": "minimum_pr_auc_improvement",
             "passed": true,
             "observed_value": 0.009133,
             "required_value": ">= 0.005",
-            "explanation": "Candidate must improve PR-AUC by at least the configured minimum amount."
+            "explanation": "Candidate must achieve the configured observed PR-AUC gain."
+        },
+        {
+            "name": "positive_bootstrap_confidence_interval",
+            "passed": false,
+            "observed_value": {
+                "lower_bound": -0.016172656674901663,
+                "upper_bound": 0.03347494231625334
+            },
+            "required_value": "Lower confidence bound must be greater than 0.",
+            "explanation": "The bootstrap confidence interval must support a positive PR-AUC improvement."
         },
         {
             "name": "roc_auc_regression",
             "passed": false,
             "observed_value": -0.010492,
             "required_value": ">= -0.01",
-            "explanation": "Candidate ROC-AUC must not decline beyond the configured tolerance."
+            "explanation": "Candidate must not exceed the permitted ROC-AUC decline."
         }
     ],
     "policy": {
@@ -48,7 +59,16 @@
         "minimum_recall": 0.7,
         "minimum_pr_auc": 0.8,
         "minimum_pr_auc_improvement": 0.005,
-        "maximum_roc_auc_regression": 0.01
+        "maximum_roc_auc_regression": 0.01,
+        "bootstrap_confidence_level": 0.95,
+        "bootstrap_lower_bound_must_exceed": 0
+    },
+    "bootstrap_evidence": {
+        "observed_improvement": 0.009133034446591748,
+        "lower_bound": -0.016172656674901663,
+        "upper_bound": 0.03347494231625334,
+        "interpretation": "IMPROVEMENT_INCONCLUSIVE",
+        "bootstrap_samples": 1000
     },
     "model_comparison": {
         "incumbent_pr_auc": 0.8537155002981295,
@@ -58,6 +78,6 @@
         "candidate_roc_auc": 0.9620396025514389,
         "roc_auc_change": -0.010492
     },
-    "explanation": "The candidate failed one or more promotion checks. The incumbent model must remain active.",
-    "deployment_instruction": "Do not replace the incumbent model in this stage. A separate deployment process must handle model promotion, health verification and rollback."
+    "explanation": "The candidate failed one or more operational or statistical promotion requirements. The incumbent model must remain active.",
+    "deployment_instruction": "This report does not deploy or replace any model. The incumbent must remain active until a separate deployment process completes successfully."
 }

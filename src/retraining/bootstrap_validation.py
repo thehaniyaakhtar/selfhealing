@@ -432,3 +432,13 @@ def main():
 if __name__ == "__main__":
     main()
 
+# Result is inconclusive 
+# Lower Bound: -0.016173
+# Upper Bound: +0.033475
+# includes 0
+# Thus, no difference between the incumbent and candidate
+# nterval also includes negative values, meaning the incumbent could outperform the candidate on a resampled dataset.
+# includes positive values too, meaning the candidate could outperform the incumbent
+# don't have sufficiently clear evidence that the candidate's PR-AUC improvement is reliable
+
+# two reasons not to promote the candidate
