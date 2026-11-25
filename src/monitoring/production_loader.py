@@ -252,3 +252,7 @@ if __name__ == "__main__":
 # 2 main functions
 # load_reference_profile(): loads saved JSON baseline, checks all 30 expected features and stat. summaries
 # prepare_monitoring_input(): coordinates the loading of both datasets and verifies compatibility
+
+# we thus have 2 seperate inputs
+# reference: histrical baseline that descibes what the models input data looks like NORMALLY
+# Produciton: data currently being monitored, compared against the baseline
